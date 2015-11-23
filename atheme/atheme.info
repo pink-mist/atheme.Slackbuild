@@ -1,8 +1,10 @@
 PRGNAM="atheme"
 VERSION="20151003"
 HOMEPAGE="http://atheme.net/"
-DOWNLOAD="https://github.com/atheme/atheme/archive/aadb3a5c6a895fd97e0fa02d38facaa82687f370.tar.gz"
-MD5SUM="febb58944257d988ca407fb64406fc04"
+DOWNLOAD="https://github.com/atheme/atheme/archive/aadb3a5c6a895fd97e0fa02d38facaa82687f370.tar.gz
+          https://github.com/atheme/libmowgli-2/archive/7790ffd63212f6e43da1fd167f0c729c0207d85b.tar.gz"
+MD5SUM="febb58944257d988ca407fb64406fc04
+        c9aafcdc6648115d6e40732703464bfc"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
 REQUIRES=""
