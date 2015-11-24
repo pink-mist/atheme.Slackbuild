@@ -62,6 +62,7 @@ fi
 
 enable_large_net=""; [ "${LARGENET:-no}" != "no" ] && enable_large_net="--enable-large-net"
 enable_contrib="";   [ "${CONTRIB:-no}" != "no" ]  && enable_contrib="--enable-contrib"
+enable_perl="";      [ "${PERL:-no}" != "no" ]     && enable_perl="--with-perl"
 enable_pcre="";      [ "${PCRE:-no}" != "no" ]     && enable_pcre="--with-pcre"
 
 set -e # Exit on most errors
@@ -103,6 +104,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux \
   --enable-fhs-paths \
+  $enable_perl \
   $enable_large_net \
   $enable_contrib \
   $enable_pcre
