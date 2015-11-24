@@ -1,0 +1,13 @@
+diff --git a/include/Makefile b/include/Makefile
+index 310ae7e..d00b1a4 100644
+--- a/include/Makefile
++++ b/include/Makefile
+@@ -67,7 +67,7 @@ hooktypes.h: hooktypes.in mkhooktypes.sh
+
+ serno.h:
+ 	$(info Generate: $@)
+-	@revh=`git log -1 --pretty=oneline | cut -d' ' -f1 2>/dev/null` || :; \
++	@revh='@ATHEME_SHA@' ; \
+ 	[ -z "$$revh" ] || echo "#define SERNO \"$$revh\"" >serno.h
+
+ include ../buildsys.mk

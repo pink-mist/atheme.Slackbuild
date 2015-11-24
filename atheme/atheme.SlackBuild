@@ -79,8 +79,7 @@ rmdir modules/contrib
 tar xvf $CWD/${CONTRIB_SHA}.tar.gz
 mv atheme-contrib-modules-$CONTRIB_SHA modules/contrib
 
-# Since it's not a proper git checkout, we need to create a define in include/serno.h
-echo "#define SERNO \"$ATHEME_SHA\"" > include/serno.h
+sed -e "s/@ATHEME_SHA@/$ATHEME_SHA/" $CWD/serno.patch | patch -p1
 
 chown -R root:root .
 find -L . \
