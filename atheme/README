@@ -1,0 +1,17 @@
+atheme (irc services)
+
+Atheme is one of the major versions of irc services for irc networks providing
+things like NickServ and ChanServ.
+
+You can enable a few optional features by passing variables to the script
+(VAR=yes ./atheme.SlackBuild):
+  LARGENET=yes|no (Builds atheme specifically tailored to large networks)
+  CONTRIB=yes|no (Builds some contrib modules)
+  PERL=yes|no (Builds atheme's perl api)
+  PCRE=yes|no (Allow PCRE regexes to be used)
+
+All these default to no.
+
+Before starting `atheme-services` you will need to create a configuration file
+named `/etc/atheme/atheme.conf`. In that directory there are several example
+configuration files you can make use of.
