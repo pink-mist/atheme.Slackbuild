@@ -2,7 +2,7 @@
 
 # Slackware build script for atheme
 
-# Copyright 2015 Andreas Guldstrand <andreas.guldstrand@gmail.com>
+# Copyright 2016 Andreas Guldstrand <andreas.guldstrand@gmail.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,13 +23,9 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=atheme
-VERSION=${VERSION:-20151003}
+VERSION=${VERSION:-7.2.7}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
-
-ATHEME_SHA=${ATHEME_SHA:-aadb3a5c6a895fd97e0fa02d38facaa82687f370}
-LIBMOWGLI_SHA=${LIBMOWGLI_SHA:-7790ffd63212f6e43da1fd167f0c729c0207d85b}
-CONTRIB_SHA=${CONTRIB_SHA:-a63a14ceae4953c47c682f341375f9929779a7fe}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -70,17 +66,9 @@ set -e # Exit on most errors
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$ATHEME_SHA
-tar xvf $CWD/${ATHEME_SHA}.tar.gz
-cd $PRGNAM-$ATHEME_SHA
-tar xvf $CWD/${LIBMOWGLI_SHA}.tar.gz
-rmdir libmowgli-2
-mv libmowgli-2-$LIBMOWGLI_SHA ./libmowgli-2
-rmdir modules/contrib
-tar xvf $CWD/${CONTRIB_SHA}.tar.gz
-mv atheme-contrib-modules-$CONTRIB_SHA modules/contrib
-
-sed -e "s/@ATHEME_SHA@/$ATHEME_SHA/" $CWD/serno.patch | patch -p1
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+cd $PRGNAM-$VERSION
 
 chown -R root:root .
 find -L . \
@@ -127,8 +115,6 @@ cp -a \
 cp -a \
   contrib/* $PKG/usr/doc/$PRGNAM-$VERSION/contrib
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
-sed -e "s/@ATHEME_SHA@/$ATHEME_SHA/" $CWD/serno.patch > \
-  $PKG/usr/doc/$PRGNAM-$VERSION/serno.patch
 
 # Copy the slack-desc (and a custom doinst.sh if necessary) into ./install
 mkdir -p $PKG/install
